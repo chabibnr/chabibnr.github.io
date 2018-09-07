@@ -1,3 +1,13 @@
 # chabibnr.github.io
 
-<div></div>
+<div>
+  TExt
+</div>
+<button class='button-print'>Print</button>
+<style>
+  @media print{
+  .button-print{
+  display:none
+  }
+  }
+  <style>
