@@ -3,7 +3,7 @@
 <div>
   TExt
 </div>
-<button class='button-print'>Print</button>
+<button class='button-print' onclick='javascript:window.print()'>Print</button>
 <style>
   @media print{
   .button-print{
