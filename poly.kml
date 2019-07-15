@@ -13,9 +13,9 @@
 	<Style id="falseColor">
 		<BalloonStyle>
 			<text><![CDATA[<table border="0">
-  <tr><td><b>DS</b></td><td>$[admin poly/DS]</td></tr>
-  <tr><td><b>KEC</b></td><td>$[admin poly/KEC]</td></tr>
-  <tr><td><b>KAB</b></td><td>$[admin poly/KAB]</td></tr>
+  <tr><td><b>DS</b></td><td>$[DS]</td></tr>
+  <tr><td><b>KEC</b></td><td>$[KEC]</td></tr>
+  <tr><td><b>KAB</b></td><td>$[KAB]</td></tr>
 </table>
 ]]></text>
 		</BalloonStyle>
