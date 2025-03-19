@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.12.5/shaka-player.ui.min.js' crossorigin='anonymous'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.12.5/shaka-player.compiled.js' crossorigin='anonymous'></script>
+  <script src='https://shaka.pisionpluss3.workers.dev/xplay/rasio.js'></script>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.12.5/controls.min.css' crossorigin='anonymous'/>
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons+Sharp" rel="stylesheet">
+  <link href="https://pidio.pages.dev/player/style.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	
+	<style>
+    body {
+      margin: 0;
+      font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-size: .94rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #aaa;
+      text-align: left;
+      background-color: #000;
+    }
+  </style>
+  <link rel="stylesheet" href="https://xyssatu.pages.dev/event/adblock.css">
+</head>
+<script>
+  function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+      results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+
+  // Ambil nilai parameter 'id' dari URL
+  var id = getParameterByName('id');
+</script>
+
+	
+<body bgcolor='black' style='margin:0' oncontextmenu='return false' onkeydown='return false' onmousedown='return false'>
+  <div id='vidio' class="vidio" data-shaka-player-container style='position:absolute;z-index: -1;top: 0;left: 0;width: 100%; height: 100%;object-fit:fill cover;'>
+    <video autoplay data-shaka-player id='xystv' class='rasio' poster="https://pidio.pages.dev/player/poster.jpg" style='width:100%;height:100%;'></video>
+    <!-- Your existing video controls -->
+  </div>
+  <div id='fixedban' style='width:100%;margin:auto;text-align:center;float:none;overflow:hidden;display:scroll;position:;bottom:0;z-index:999;-webkit-transform:translateZ(0);'>
+    <div>
+      <a id='close-fixedban' onclick='document.getElementById("fixedban").style.display = "none";' style='cursor:pointer;'><img alt='close' src='https://pidio.pages.dev/player/btn_close.gif' title='close button' style='vertical-align:middle;'/></a>
+    </div>
+    <div style='text-align:center;display:block;max-width:100%;height:auto;overflow:hidden;margin:auto'>
+      <center>
+        <div class="row" style="padding:0px;margin-left:0px;margin-bottom:px">
+          <div class="col-3" style="padding:0px;">
+            <div class="card game-itme border-2 list-levels " style="margin:0px;padding:0px;border-radius:0px;border: 1px solid #000">
+              <div class="w-100 time-is-captitle" style="text-align:center;padding:0px;margin-left:0" onclick="refreshPage()"><font style="font-size:9px;font-weight:600;color:#fff">REFRESH</font></div>
+            </div>
+          </div>
+          <div class="col-3" style="padding:0px;">
+            <div class="card game-itme border-1 list-levels " style="margin:0px;padding:0px;border-radius:0px;border: 1px solid #000">
+              <div class="w-100 time-is-captitle" style="text-align:center;padding:0px;margin-left:0" onclick="toggleFillFit()"><font style="font-size:9px;font-weight:600;color:#fff">FIL/FIT</font></div>
+            </div>
+          </div>
+          <div class="col-3" style="padding:0px;">
+            <div class="card game-itme border-1 list-levels " style="margin:0px;padding:0px;border-radius:0px;border: 1px solid #000">
+              <div class="w-100 time-is-captitle" style="text-align:center;padding:0px;margin-left:0" onclick="toggleZoom()"><font style="font-size:9px;font-weight:600;color:#fff">ZOOM IN/OUT</font></div>
+            </div>
+          </div>
+          <div class="col-3" style="padding:0px;">
+            <div class="card game-itme border-1 list-levels " style="margin:0px;padding:0px;border-radius:0px;border: 1px solid #000">
+              <div class="w-100 time-is-captitle" style="text-align:center;padding:0px;margin-left:0" onclick="openNewLink()"><font style="font-size:9px;font-weight:600;color:#fff">OPEN NS PLAYER</font></div>
+            </div>
+          </div>
+        </div>
+	      
+      </center>
+    </div>
+  </div>
+
+  <script src='https://pidio.pages.dev/player/aspekRasio.js' crossorigin='anonymous'></script>
+  <script>
+    // Function to get URL parameters
+    function getUrlParameter(name) {
+      name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+      var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+      var results = regex.exec(location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // Ambil nilai parameter 'id' dari URL
+    var id = getUrlParameter('id');
+
+    // Setel ID video berdasarkan parameter URL
+    if (id) {
+      document.getElementById('xystv').id = id;
+    }
+
+    // Fungsi untuk membuka link baru dengan ID yang diambil dari URL
+    function openNewLink() {
+      if (id) {
+        // Bangun URL baru dengan ID yang diambil dari URL saat ini
+        var newLink = `https://vidio2.pages.dev/?id=https://ns-player.pages.dev/?id=${id}`;
+        // Buka URL baru di tab baru
+        window.open(newLink, '_blank');
+      } else {
+        alert('ID tidak ditemukan di URL!');
+      }
+    }
+  </script>
+</body>
+</html>
